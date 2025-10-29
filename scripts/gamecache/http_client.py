@@ -92,7 +92,7 @@ class HttpResponse:
 class HttpSession:
     """Simple session-like class that mimics requests.Session interface"""
 
-    def get(self, url, params=None, timeout=30):
+    def get(self, url, params=None, timeout=30, headers=None):
         """GET request that mimics requests.Session.get()"""
         # Build full URL with parameters
         if params:
@@ -102,7 +102,7 @@ class HttpSession:
             full_url = url
 
         try:
-            response_data = make_http_request(full_url, timeout=timeout)
+            response_data = make_http_request(full_url, timeout=timeout, headers=headers)
             return HttpResponse(response_data, {}, 200, from_cache=False, url=full_url)
         except Exception as e:
             # Re-raise with status code info if possible

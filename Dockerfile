@@ -1,5 +1,5 @@
 # Use a Python base image
-FROM python:3.13-slim
+FROM python:3.9-slim
 
 # Install Nginx, gettext for envsubst, cron, and curl
 RUN apt-get update && apt-get install -y nginx gettext cron curl && apt-get clean
@@ -17,8 +17,7 @@ RUN chown -R www-data:www-data /app
 RUN pip install --no-cache-dir -r scripts/requirements.txt
 
 # Make the scripts executable
-# RUN chmod +x entrypoint.sh update_db.sh
-RUN chmod +x update_db.sh
+RUN chmod +x entrypoint.sh update_db.sh
 
 # Set default port
 ENV PORT=8064
@@ -32,5 +31,4 @@ HEALTHCHECK --interval=1m --timeout=3s \
 
 # Set the entrypoint
 # The entrypoint script will handle config generation and starting nginx
-# ENTRYPOINT ["/app/entrypoint.sh"]
-ENTRYPOINT ["python", "/app/entrypoint.py"]
+ENTRYPOINT ["/app/entrypoint.sh"]

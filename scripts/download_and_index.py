@@ -22,6 +22,7 @@ def main(args):
     downloader = Downloader(
         cache_bgg=args.cache_bgg,
         debug=args.debug,
+        token=SETTINGS["boardgamegeek"]["token"]
     )
     extra_params = SETTINGS["boardgamegeek"].get("extra_params", {"own": 1})
     collection = downloader.collection(
