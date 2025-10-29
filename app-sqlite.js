@@ -111,7 +111,8 @@ async function initializeDatabase(settings) {
       locateFile: file => `https://cdn.jsdelivr.net/npm/sql.js@1.10.3/dist/${file}`
     });
 
-    const isDev = /^(localhost|127\\.0\\.0\\.1)$/.test(location.hostname);
+    // const isDev = /^(localhost|127\\.0\\.0\\.1)$/.test(location.hostname);
+    const isDev = true;
     // Use existing CORS proxy host
     const dbUrl = isDev ? './gamecache.sqlite.gz' :
       `https://cors-proxy.mybgg.workers.dev/${settings.github.repo}`;

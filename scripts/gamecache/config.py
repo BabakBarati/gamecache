@@ -1,6 +1,7 @@
 """
 Configuration parsing utilities for GameCache project.
 """
+import os
 
 from pathlib import Path
 
@@ -47,7 +48,8 @@ def create_nested_config(config):
             "title": config["title"]
         },
         "boardgamegeek": {
-            "user_name": config["bgg_username"]
+            "user_name": config["bgg_username"],
+            "token": os.environ.get("BGG_TOKEN"),
         },
         "github": {
             "repo": config["github_repo"]

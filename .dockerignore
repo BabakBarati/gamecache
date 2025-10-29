@@ -1,0 +1,44 @@
+# Docker build context exclusions
+
+.DS_Store
+
+# Git and GitHub
+.git
+.github
+.gitignore
+
+# Project metadata and documentation
+CODE_OF_CONDUCT.md
+LICENSE
+README.md
+setup.cfg
+
+# Local Docker files
+Dockerfile
+.dockerignore
+
+# Images and assets not used in the site
+gamecache-preview.png
+Browserstack-logo@2x.png
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Unused scripts
+scripts/enable_hourly_updates.py
+scripts/check_website.py
+scripts/validate_setup.py
+scripts/requirements.in
+
+# docker images
+gamecache*.tar
+docker-build-amd64.sh
+
+# docker compose files
+docker-compose*.yml
+docker-compose*.yaml
+
+
+gamecache.sqlite.gz
+gamecache.sqlite

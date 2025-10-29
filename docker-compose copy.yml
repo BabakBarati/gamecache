@@ -1,0 +1,15 @@
+services:
+  gamecache:
+    image: gamecache:latest
+    container_name: gamecache
+    environment:
+      - BGG_USERNAME=babakb
+      - TITLE=Babak & Saeede's Game Stash
+      - UPDATE_INTERVAL_MINUTES=240
+      - TZ=EUROPE/AMSTERDAM
+    user: "1000:990"
+    restart: unless-stopped
+networks:
+  default:
+    name: homelab-apps-network
+    external: true

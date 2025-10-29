@@ -3,3 +3,5 @@ __pycache__
 *.sqlite
 *.sqlite-journal
 *.sqlite.gz
+entrypoint.py
+gamecache*.tar

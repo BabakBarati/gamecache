@@ -1,0 +1,32 @@
+# Docker Compose file for the GameCache application
+#
+# Usage:
+#   - To build and run the container: `docker-compose up --build`
+#   - To run in the background: `docker-compose up --build -d`
+#   - To stop the container: `docker-compose down`
+
+services:
+  gamecache:
+    # Build the Docker image from the Dockerfile in the current directory
+    # build: .
+    image: gamecache:latest
+    
+    container_name: gamecache
+    
+    # Map a port on the host to the container's default port (host:container)
+    # The container's default port is set to 8064 in the Dockerfile.
+    ports:
+      - "8064:8064"
+      
+    # Define the environment variables for the container
+    environment:
+      # --- IMPORTANT ---
+      # Set your BoardGameGeek username here
+      - BGG_USERNAME=babakb
+      - BGG_TOKEN=f4b2e08b-0f77-48ec-b129-02906f5c5f11
+      
+      # The title of the website
+      - TITLE=Babak & Saeede's Game Stash
+      
+      # The interval in minutes for how often to refresh the database
+      - UPDATE_INTERVAL_MINUTES=1440  # 1440 minutes = 24 hours

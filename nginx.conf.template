@@ -1,0 +1,23 @@
+server {
+    listen       ${PORT};
+    server_name  localhost;
+
+    # Set the document root for all requests
+    root /app;
+
+    # Set the default file to serve for directory requests
+    index index.html;
+
+    # Deny access to sensitive files
+    location ~* \.sh$ {
+        deny all;
+    }
+
+    location /scripts/ {
+        deny all;
+    }
+
+    # This location block is sufficient for serving the static files.
+    # A request to / will serve /app/index.html due to the directives above.
+    location / {}
+}
